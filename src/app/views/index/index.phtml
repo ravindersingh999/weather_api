@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container-fluid col text-center mt-2">
+        <h2>Search Book</h2>
+    </div>
+    <div class="container-fluid border border-dark w-50 p-3 mt-5">
+        <form method="POST" action="index">
+
+            <div class="form-outline mb-4">
+                <label class="form-label" for="item">Search</label>
+                <input type="text" id="item" name="item" class="form-control" />
+            </div>
+
+            <div class="col text-center">
+                <input type="submit" class="btn btn-primary text-center" value="Search" name="search">
+            </div>
+        </form>
+    </div>
+
+    <?php
+    error_reporting(0);
+    $html = "";
+    if ($data) {
+        foreach ($data as $k => $v) {
+            $html .= '<div class="d-flex my-4 border p-3 bg-dark text-light">
+            <div class="card-body">
+              <p class="card-text"><b>' . $v['name'] . '</b></p>
+              <p class="card-text"><b>Region</b>&nbsp;' . $v['region'] . '</p>
+              <p class="card-text"><b>Latitude</b>&nbsp;' . $v['lat'] . '</p>
+              <p class="card-text"><b>Langitude</b>&nbsp;' . $v['lon'] . '</p>
+              <a href="index/details?id=' . $v['url'] . '" class="btn btn-success">Details</a>
+          </div>
+          </div>';
+        }
+    }
+    echo $html;
+    ?>
+</body>
+
+</html>

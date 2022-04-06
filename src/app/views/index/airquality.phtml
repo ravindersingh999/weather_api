@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <section class="">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="row gx-4 gx-lg-5 align-i tems-center">
+                <?php $html = "";
+                // error_reporting(0);
+                $html .= '<div class="col">
+                        <h1 class="display-5 fw-bolder">' . $data['location']['name'] . '</h1>
+                        <p class="lead">CO: ' . $data['current']['air_quality']['co'] . '</p>
+                        <p class="lead">NO2: ' . $data['current']['air_quality']['no2'] . '</p>
+                        <p class="lead">O3: ' . $data['current']['air_quality']['o3'] . '</p>
+                        <p class="lead">SO2: ' . $data['current']['air_quality']['so2'] . '</p>
+                        <p class="lead">PM2_5: ' . $data['current']['air_quality']['pm2_5'] . '</p>
+                        <p class="lead">PM10: ' . $data['current']['air_quality']['pm10'] . '</p>
+                    </div>';
+                ?>
+                <?php echo $html; ?>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

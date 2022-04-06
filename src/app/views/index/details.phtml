@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <section class="">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="row gx-4 gx-lg-5 align-i tems-center">
+                <?php $html = "";
+                error_reporting(0);
+                $html .= '<div class="col">
+                        <h1 class="display-5 fw-bolder">' . $data['location']['name'] . '</h1>
+                        <p class="lead">Region: ' . $data['location']['region'] . '</p>
+                        <p class="lead">Country: ' . $data['location']['country'] . '</p>
+                        <p class="lead">Current Timezone: ' . $data['location']['tz_id'] . '</p>
+                        <p class="lead">Local Time: ' . $data['location']['localtime'] . '</p>
+                        <h3 class="display-5 fw-bolder">Current Weather Condition</h3>
+                        <p class="lead"><img src="' . $data['current']['condition']['icon'] . '">' . $data['current']['condition']['text'] .'</p>
+                        <p class="lead">Temperature: ' . $data['current']['temp_c'] . '&degC</p>
+                        
+                        <div class="col">
+                        <a href="/index/current?id='.$url.'" class="btn btn-primary">Current Weather</a>
+                        <a href="/index/forecast?id='.$url.'&days='.$data['current']['is_day'].'" class="btn btn-primary">Forecast</a>
+                        <a href="" class="btn btn-primary">History</a>
+                        <a href="/index/timezone?id='.$url.'" class="btn btn-primary">Time Zone</a>
+                        </div>
+                        <div class="col mt-2">
+                        <a href="/index/sports?id='.$url.'" class="btn btn-primary">Sports</a>
+                        <a href="/index/astronomy?id='.$url.'&date='.$data['location']['localtime'].'" class="btn btn-primary">Astronomy</a>
+                        <a href="" class="btn btn-primary">Weather Alerts</a>
+                        <a href="/index/airquality?id='.$url.'" class="btn btn-primary">Air Quality</a>
+                        </div>
+                    </div>';
+                ?>
+                <?php echo $html; ?>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

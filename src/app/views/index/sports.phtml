@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <section class="">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="row gx-4 gx-lg-5 align-i tems-center">
+                <?php $html = "";
+                // error_reporting(0);
+                $html .= '<div class="col">
+                        <h1 class="display-5 fw-bolder">Stadium' . $data['football'][0]['stadium'] . '</h1>
+                        <p class="lead">Country: ' . $data['football'][0]['country'] . '</p>
+                        <p class="lead">Tournament: ' . $data['football'][0]['tournament'] . '</p>
+                        <p class="lead">Start: ' . $data['football'][0]['start'] . '</p>
+                        <p class="lead">Match: ' . $data['football'][0]['match'] . '</p>
+                    </div>';
+                ?>
+                <?php echo $html; ?>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <section class="">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="row gx-4 gx-lg-5 align-i tems-center">
+                <?php $html = "";
+                // error_reporting(0);
+                $html .= '<div class="col">
+                        <h1 class="display-5 fw-bolder">' . $data['location']['name'] . '</h1>
+                        <p class="lead">Region: ' . $data['location']['region'] . '</p>
+                        <p class="lead">Country: ' . $data['location']['country'] . '</p>
+                        <p class="lead">Current Timezone: ' . $data['location']['tz_id'] . '</p>
+                        <p class="lead">Local Time: ' . $data['location']['localtime'] . '</p>
+                        <h3 class="display-5 fw-bolder">Current Weather Condition</h3>
+                        <p class="lead"><img src="' . $data['current']['condition']['icon'] . '">' . $data['current']['condition']['text'] .'</p>
+                        <p class="lead">Temperature: ' . $data['current']['temp_c'] . '&degC</p>
+                        <p class="lead">Maximum Temperature: ' . $data['forecast']['forecastday'][0]['day']['maxtemp_c'] . '</p>
+                        <p class="lead">Minimum Temperature: ' . $data['forecast']['forecastday'][0]['day']['mintemp_c'] . '</p>
+                        <p class="lead">Average Temperature: ' . $data['forecast']['forecastday'][0]['day']['avgtemp_c'] . '</p>
+                    </div>';
+                ?>
+                <?php echo $html; ?>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

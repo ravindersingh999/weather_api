@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <section class="">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="row gx-4 gx-lg-5 align-i tems-center">
+                <?php $html = "";
+                // error_reporting(0);
+                $html .= '<div class="col">
+                        <h1 class="display-5 fw-bolder">' . $data['location']['name'] . '</h1>
+                        <p class="lead">Sunrise: ' . $data['astronomy']['astro']['sunrise'] . '</p>
+                        <p class="lead">Sunset: ' . $data['astronomy']['astro']['sunrise'] . '</p>
+                        <p class="lead">Moonrise: ' . $data['astronomy']['astro']['sunrise'] . '</p>
+                        <p class="lead">Moonset: ' . $data['astronomy']['astro']['sunrise'] . '</p>
+                        <p class="lead">Moon Phase: ' . $data['astronomy']['astro']['sunrise'] . '</p>
+                        <p class="lead">Moon Illumination: ' . $data['astronomy']['astro']['sunrise'] . '</p>
+                    </div>';
+                ?>
+                <?php echo $html; ?>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
