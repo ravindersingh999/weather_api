@@ -13,14 +13,12 @@ class IndexController extends Controller
             $temp = explode(" ", $name);
             $item = implode("+", $temp);
 
-            $url = "http://api.weatherapi.com/v1/search.json?q=$item&key=0bab7dd1bacc418689b143833220304";
-
-            // Initialize a CURL session.
-            $ch = curl_init($url);
-
-            //grab URL and pass it to the variable.
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            $response = json_decode(curl_exec($ch), true);
+            $client = new Client([
+                'base_uri' => 'http://api.weatherapi.com/v1/',
+            ]);
+    
+            $response = $client->request('GET', 'search.json?q='.$item.'&key=0bab7dd1bacc418689b143833220304');
+            $response = json_decode($response->getbody(), true);
 
             $this->view->data = $response;
 
@@ -37,12 +35,12 @@ class IndexController extends Controller
         $temp = explode('-', $id);
         $name = implode('+', $temp);
 
-        $url = "http://api.weatherapi.com/v1/current.json?q=$name&key=0bab7dd1bacc418689b143833220304";
+        $client = new Client([
+            'base_uri' => 'http://api.weatherapi.com/v1/',
+        ]);
 
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $response = json_decode(curl_exec($ch), true);
-
+        $response = $client->request('GET', 'current.json?q='.$name.'&key=0bab7dd1bacc418689b143833220304');
+        $response = json_decode($response->getbody(), true);
         // echo '<pre>';
         // print_r($response);
         // echo '</pre>';
@@ -54,13 +52,14 @@ class IndexController extends Controller
     public function currentAction()
     {
         $name = $this->request->get('id');
-        
-        $url = "http://api.weatherapi.com/v1/current.json?q=$name&key=0bab7dd1bacc418689b143833220304";
-        
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $response = json_decode(curl_exec($ch), true);
-        
+
+        $client = new Client([
+            'base_uri' => 'http://api.weatherapi.com/v1/',
+        ]);
+
+        $response = $client->request('GET', 'current.json?q='.$name.'&key=0bab7dd1bacc418689b143833220304');
+        $response = json_decode($response->getbody(), true);
+
         // echo '<pre>';
         // print_r($response);
         // echo '</pre>';
@@ -72,12 +71,14 @@ class IndexController extends Controller
     {
         $name = $this->request->get('id');
         $days = $this->request->get('days');
-        $url = "http://api.weatherapi.com/v1/forecast.json?q=$name&days=$days&key=0bab7dd1bacc418689b143833220304";
-        
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $response = json_decode(curl_exec($ch), true);
-        
+
+        $client = new Client([
+            'base_uri' => 'http://api.weatherapi.com/v1/',
+        ]);
+
+        $response = $client->request('GET', 'forecast.json?q='.$name.'&days='.$days.'&key=0bab7dd1bacc418689b143833220304');
+        $response = json_decode($response->getbody(), true);
+
         // echo '<pre>';
         // print_r($response);
         // echo '</pre>';
@@ -88,11 +89,13 @@ class IndexController extends Controller
     public function timezoneAction()
     {
         $name = $this->request->get('id');
-        $url = "http://api.weatherapi.com/v1/forecast.json?q=$name&key=0bab7dd1bacc418689b143833220304";
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $response = json_decode(curl_exec($ch), true);
-        
+         
+        $client = new Client([
+            'base_uri' => 'http://api.weatherapi.com/v1/',
+        ]);
+
+        $response = $client->request('GET', 'forecast.json?q='.$name.'&key=0bab7dd1bacc418689b143833220304');
+        $response = json_decode($response->getbody(), true);
         // echo '<pre>';
         // print_r($response);
         // echo '</pre>';
@@ -103,11 +106,14 @@ class IndexController extends Controller
     public function sportsAction()
     {
         $name = $this->request->get('id');
-        $url = "http://api.weatherapi.com/v1/sports.json?q=$name&key=0bab7dd1bacc418689b143833220304";
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $response = json_decode(curl_exec($ch), true);
-        
+
+        $client = new Client([
+            'base_uri' => 'http://api.weatherapi.com/v1/',
+        ]);
+
+        $response = $client->request('GET', 'sports.json?q='.$name.'&key=0bab7dd1bacc418689b143833220304');
+        $response = json_decode($response->getbody(), true);
+
         // echo '<pre>';
         // print_r($response);
         // echo '</pre>';
@@ -121,11 +127,13 @@ class IndexController extends Controller
         $date = $this->request->get('date');
         $temp = explode(" ", $date);
 
-        $url = "http://api.weatherapi.com/v1/astronomy.json?q=$name&dt=$temp[0]&key=0bab7dd1bacc418689b143833220304";
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $response = json_decode(curl_exec($ch), true);
-        
+        $client = new Client([
+            'base_uri' => 'http://api.weatherapi.com/v1/',
+        ]);
+
+        $response = $client->request('GET', 'astronomy.json?q='.$name.'&dt='.$temp[0].'&key=0bab7dd1bacc418689b143833220304');
+        $response = json_decode($response->getbody(), true);
+
         // echo '<pre>';
         // print_r($response);
         // echo '</pre>';
@@ -136,11 +144,13 @@ class IndexController extends Controller
     public function airqualityAction()
     {
         $name = $this->request->get('id');
-        $url = "http://api.weatherapi.com/v1/current.json?q=$name&aqi=yes&key=0bab7dd1bacc418689b143833220304";
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $response = json_decode(curl_exec($ch), true);
-        
+
+        $client = new Client([
+            'base_uri' => 'http://api.weatherapi.com/v1/',
+        ]);
+
+        $response = $client->request('GET', 'current.json?q='.$name.'&aqi=yes&key=0bab7dd1bacc418689b143833220304');
+        $response = json_decode($response->getbody(), true);
         // echo '<pre>';
         // print_r($response);
         // echo '</pre>';
